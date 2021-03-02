@@ -1,0 +1,31 @@
+.input-dimensions {
+  height: 50px;
+  width: 600px;
+}
+
+.ant-select-selection-placeholder.placeholder-color {
+  color: black;
+}
+
+.ant-select.placeholder-font {
+  size: 16px;
+}
+
+/* find way to apply selectively */
+.ant-checkbox-group-item {
+  display: block;
+  margin-right: 0;
+}
+
+/* .ant-modal-body {
+  width: 0;
+} */
+
+.word-style {
+}
+
+.type-style {
+}
+
+.definition-style {
+}

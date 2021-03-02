@@ -1,0 +1,30 @@
+.heading-row {
+  background-color: rgb(212, 212, 212);
+}
+h1.ant-typography.heading {
+  padding-top: 20px;
+  font-size: 48px;
+}
+
+.history-page .history {
+  width: 38%;
+  padding-left: 250px;
+}
+
+.align-icon {
+  margin-bottom: 8px;
+}
+
+.my-page .ant-list {
+  font-size: 2em;
+  color: blue;
+}
+
+.ant-list-item-meta-description{ 
+  font-size:12px;
+  
+}
+
+/* .ant-list-item-meta-title {
+  color: green;
+} */
