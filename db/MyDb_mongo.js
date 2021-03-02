@@ -1,5 +1,6 @@
 const { MongoClient, ObjectId } = require('mongodb');
 const redis = require('redis');
+
 const { promisify } = require('util');
 
 function myDb() {
@@ -10,7 +11,7 @@ function myDb() {
   const uri = process.env.MONGODB_URI || 'mongodb://localhost:27017';
 
   // only using one redis connection per server
-  const rClient = redis.createClient();
+  const rClient = redis.createClient(process.env.REDIS_URL);
 
   rClient.on('error', function (error) {
     // TODO: HANDLE ERRORS
