@@ -4,7 +4,7 @@ const { promisify } = require('util');
 
 function myDb() {
   const myDb = {};
-  const dbName = 'project2';
+  const dbName = 'eng-sis-dictionary-v1';
   const collName = 'words';
   // cahnge uri to given url
   const uri = process.env.MONGODB_URI || 'mongodb://localhost:27017';
