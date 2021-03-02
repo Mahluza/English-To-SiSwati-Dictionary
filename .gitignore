@@ -2,3 +2,4 @@ node_modules
 schema.js
 E_data.txt
 words.json
+package-lock.json
