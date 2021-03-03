@@ -6,6 +6,7 @@ import {
   Redirect,
   useLocation,
   useHistory,
+  Link,
 } from 'react-router-dom';
 import { Menu, Layout, Typography } from 'antd';
 
@@ -46,15 +47,13 @@ function App() {
           selectedKeys={[location.pathname.split('/')[1]]}
         >
           <Menu.Item key="home">
-            <a href="http://localhost:3000/home">
-              SISWATI TO ENGLISH DICTIONARY
-            </a>
+            <Link to="/home">SISWATI TO ENGLISH DICTIONARY</Link>
           </Menu.Item>
           <Menu.Item key="saved">
-            <a href="http://localhost:3000/saved">Saved Words</a>
+            <Link to="/saved">Saved Words</Link>
           </Menu.Item>
           <Menu.Item key="history" style={{ float: 'right' }}>
-            <a href="http://localhost:3000/history">History</a>
+            <Link to="/history">History</Link>
           </Menu.Item>
         </Menu>
       </Header>
