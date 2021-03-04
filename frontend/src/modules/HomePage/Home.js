@@ -16,7 +16,9 @@ import { SearchOutlined } from '@ant-design/icons';
 import SaveWordModal from './subcomponents/SaveWordModal';
 import './HomePageStyle.css';
 
-// // const instance = axios.create({ baseURL: 'http://localhost:5000' });
+const instance = axios.create({
+  baseURL: 'http://localhost:' + process.env.PORT,
+});
 
 const { Title, Text } = Typography;
 
@@ -150,6 +152,7 @@ function Home() {
   // To do: radio button plumbing hasn't been implemented
   return (
     <div>
+      {alert(process.env.PORT)}
       <Row justify="center" align="middle" style={{ height: '50px' }}>
         {showNotFound ? (
           <Alert
