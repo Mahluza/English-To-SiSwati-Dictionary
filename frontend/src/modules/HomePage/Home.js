@@ -16,7 +16,7 @@ import { SearchOutlined } from '@ant-design/icons';
 import SaveWordModal from './subcomponents/SaveWordModal';
 import './HomePageStyle.css';
 
-const instance = axios.create({ baseURL: 'http://localhost:5000' });
+// const instance = axios.create({ baseURL: 'http://localhost:5000' });
 
 const { Title, Text } = Typography;
 
@@ -61,7 +61,7 @@ function Home() {
   // would require a change in database perhaps
   const onFinish = (values) => {
     console.log('values:', values);
-    instance.post('/definition', values).then((result) => {
+    axios.post('/definition', values).then((result) => {
       console.log('result:', result.data);
 
       switch (result.data.type) {
