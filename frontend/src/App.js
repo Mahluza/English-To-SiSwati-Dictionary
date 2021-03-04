@@ -64,7 +64,7 @@ function App() {
         </Route>
         <Route path="/home" component={Home} />;
         <Route path="/saved" component={SavedWords} />;
-        <Route path="/saved/:list" component={SavedWords} />;
+        <Route path="/saved/:phoneid/:list" component={SavedWords} />;
         <Route path="/history" component={History} />;
         {/* <Route path="/modaltest" component={AddWordModal} />;
           <Route path="/test" component={Feed} /> */}

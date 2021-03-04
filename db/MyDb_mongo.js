@@ -8,10 +8,11 @@ function myDb() {
   const dbName = 'eng-sis-dictionary-v1';
   const collName = 'words';
   // change uri to given url
-  const uri = process.env.MONGODB_URI || 'mongodb://localhost:27017';
-  // const uri =
-  //   'mongodb+srv://admin:BthJQytGeo70RxoR@eng-sis-dictionary-west.6m87r.mongodb.net/eng-sis-dictionary-v1?retryWrites=true&w=majority';
-  // only using one redis connection per server
+  // const uri = process.env.MONGODB_URI || 'mongodb://localhost:27017';
+  const uri =
+    process.env.MONGODB_URI ||
+    'mongodb+srv://admin:BthJQytGeo70RxoR@eng-sis-dictionary-west.6m87r.mongodb.net/eng-sis-dictionary-v1?retryWrites=true&w=majority';
+
   const rClient = redis.createClient(process.env.REDIS_URL);
 
   rClient.on('error', function (error) {
