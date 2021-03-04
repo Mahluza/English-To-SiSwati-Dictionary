@@ -2,12 +2,10 @@ const express = require('express');
 const bodyParser = require('body-parser');
 const mongoose = require('mongoose');
 
-
 const app = express();
 var cors = require('cors');
 
 const port = process.env.PORT || 5000;
-app.listen(port, () => console.log('Backend server live on ' + port));
 
 // // database schema
 // const schema = mongoose.Schema;
@@ -64,3 +62,5 @@ const methods = require('./routes/methods_mongo');
 // });
 
 app.use('/', methods);
+
+app.listen(port, () => console.log('Backend server live on ' + port));
