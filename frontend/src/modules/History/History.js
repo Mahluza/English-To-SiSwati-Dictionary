@@ -16,7 +16,7 @@ import InfiniteScroll from 'react-infinite-scroller';
 import './History.css';
 import { useHistory } from 'react-router-dom';
 
-const instance = axios.create({ baseURL: 'http://localhost:5000' });
+// const instance = axios.create({ baseURL: 'http://localhost:5000' });
 const { Title } = Typography;
 var data = [];
 // require('datejs');
@@ -28,13 +28,13 @@ function History() {
   // console.log('itemWord', itemWord);
   function onDel(values) {
     console.log('on delete values', values);
-    instance.post('/history', { word: values.word }).then((result) => {});
+    axios.post('/history', { word: values.word }).then((result) => {});
     // pageHistory.push('/history');
     pageHistory.go(0);
     // console.log('event id', event.target.id);
   }
   useEffect(() => {
-    instance.get('/history').then((result) => {
+    axios.get('/history').then((result) => {
       // console.log('get history result:', result);
       var n = result.data.history.length;
       var historyArray = result.data.history;

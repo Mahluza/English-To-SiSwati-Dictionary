@@ -16,7 +16,7 @@ import axios from 'axios';
 
 import './SavedWords.css';
 
-const instance = axios.create({ baseURL: 'http://localhost:5000' });
+// const instance = axios.create({ baseURL: 'http://localhost:5000' });
 const { Title } = Typography;
 const { Option } = Select;
 
@@ -48,7 +48,7 @@ function SavedWords() {
   console.log('url:', location.pathname);
 
   useEffect(() => {
-    instance.get('/lists').then((result) => {
+    axios.get('/lists').then((result) => {
       //console.log('result1:', result.data.lists);
       var name;
       for (name of result.data.lists) {
@@ -69,7 +69,7 @@ function SavedWords() {
       setSelectedList(listName);
       setListRender(true);
       var values = { phoneId: 2, listName: listName };
-      instance.post('/getwords', values).then((result) => {
+      axios.post('/getwords', values).then((result) => {
         console.log('result2:', result.data.words);
         var doc;
         for (doc of result.data.words) {
@@ -89,7 +89,7 @@ function SavedWords() {
     console.log(menuVal);
 
     var values = { phoneID: 2, listName: menuVal.key };
-    instance.post('/listdel', values).then((result) => {
+    axios.post('/listdel', values).then((result) => {
       console.log(result.data.msg);
     });
     // I could delete the relevant list from the state and have the site update that way
@@ -109,7 +109,7 @@ function SavedWords() {
     // setWordData([{ spelling: 'only i survived' }]);
     var wordMongoId = menuVal.key;
     var values = { docID: wordMongoId, phoneID: 2, listName: locationArray[3] };
-    instance.post('/deleteword', values).then((result) => {
+    axios.post('/deleteword', values).then((result) => {
       console.log(result.data.msg);
     });
 
@@ -127,7 +127,7 @@ function SavedWords() {
       <Row style={{ height: '100%' }}>
         <Col span={5} className="list-column">
           <InfiniteScroll>
-            <Row style={{ paddingLeft:"20px", marginTop: '20px' }}>
+            <Row style={{ paddingLeft: '20px', marginTop: '20px' }}>
               {/* <Title level={5} style={{ color: '#001529', fontSize: '14px' }}> */}
               <Title level={4} style={{ color: '#001529' }}>
                 LISTS

@@ -4,7 +4,7 @@ import axios from 'axios';
 import { PropertySafetyFilled } from '@ant-design/icons';
 import '../HomePageStyle.css';
 
-const instance = axios.create({ baseURL: 'http://localhost:5000' });
+// // const instance = axios.create({ baseURL: 'http://localhost:5000' });
 
 // const options = [
 //   {
@@ -35,7 +35,7 @@ function SaveWordModal(props) {
     var val = 0;
     var name;
     // get lists
-    instance.get('/lists').then((result) => {
+    axios.get('/lists').then((result) => {
       console.log(result.data);
       for (name of result.data.lists) {
         listOptions.push({ label: name, value: val });
@@ -88,7 +88,7 @@ function SaveWordModal(props) {
     }
     // console.log('listNames:', listNames);
     var values = { mongoId: props.mongoDocId, lists: listNames };
-    instance.post('/save', values);
+    axios.post('/save', values);
   }
 
   return (
