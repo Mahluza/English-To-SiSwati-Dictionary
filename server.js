@@ -1,6 +1,7 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-const mongoose = require('mongoose');
+// const mongoose = require('mongoose');
+const path = require('path');
 
 const app = express();
 // var cors = require('cors');
@@ -43,6 +44,8 @@ const port = process.env.PORT || 5000;
 // app.use(cors());
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
+// apis
+const methods = require('./routes/methods_mongo');
 
 // app.use(function (req, res, next) {
 //   res.header('Access-Control-Allow-Headers', 'Content-Type');
@@ -51,13 +54,11 @@ app.use(bodyParser.urlencoded({ extended: true }));
 // pass client build to server
 if (process.env.NODE_ENV === 'production') {
   app.use(express.static('frontend/build'));
+
   app.get('*', (req, res) => {
     res.sendFile(path.join(__dirname, 'frontend', 'build', 'index.html'));
   });
 }
-
-// apis
-const methods = require('./routes/methods_mongo');
 
 // app.get('/', (req, res) => {
 //   res.send({ message: 'We did it!' });
