@@ -152,7 +152,6 @@ function Home() {
   // To do: radio button plumbing hasn't been implemented
   return (
     <div>
-      {alert(process.env.PORT)}
       <Row justify="center" align="middle" style={{ height: '50px' }}>
         {showNotFound ? (
           <Alert
