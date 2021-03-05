@@ -16,9 +16,9 @@ import { SearchOutlined } from '@ant-design/icons';
 import SaveWordModal from './subcomponents/SaveWordModal';
 import './HomePageStyle.css';
 
-const instance = axios.create({
-  baseURL: 'http://localhost:' + process.env.PORT,
-});
+// const instance = axios.create({
+//   baseURL: 'http://localhost:' + process.env.PORT,
+// });
 
 const { Title, Text } = Typography;
 
