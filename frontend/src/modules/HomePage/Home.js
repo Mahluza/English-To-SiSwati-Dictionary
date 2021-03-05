@@ -63,7 +63,7 @@ function Home() {
   // would require a change in database perhaps
   const onFinish = (values) => {
     console.log('values:', values);
-    axios.post('/definition', values).then((result) => {
+    axios.post('/api/definition', values).then((result) => {
       console.log('result:', result.data);
 
       switch (result.data.type) {

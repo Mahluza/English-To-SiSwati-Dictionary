@@ -48,7 +48,7 @@ function SavedWords() {
   console.log('url:', location.pathname);
 
   useEffect(() => {
-    axios.get('/lists').then((result) => {
+    axios.get('/api/lists').then((result) => {
       //console.log('result1:', result.data.lists);
       var name;
       for (name of result.data.lists) {
@@ -69,7 +69,7 @@ function SavedWords() {
       setSelectedList(listName);
       setListRender(true);
       var values = { phoneId: 2, listName: listName };
-      axios.post('/getwords', values).then((result) => {
+      axios.post('/api/getwords', values).then((result) => {
         console.log('result2:', result.data.words);
         var doc;
         for (doc of result.data.words) {
@@ -89,7 +89,7 @@ function SavedWords() {
     console.log(menuVal);
 
     var values = { phoneID: 2, listName: menuVal.key };
-    axios.post('/listdel', values).then((result) => {
+    axios.post('/api/listdel', values).then((result) => {
       console.log(result.data.msg);
     });
     // I could delete the relevant list from the state and have the site update that way
@@ -109,7 +109,7 @@ function SavedWords() {
     // setWordData([{ spelling: 'only i survived' }]);
     var wordMongoId = menuVal.key;
     var values = { docID: wordMongoId, phoneID: 2, listName: locationArray[3] };
-    axios.post('/deleteword', values).then((result) => {
+    axios.post('/api/deleteword', values).then((result) => {
       console.log(result.data.msg);
     });
 

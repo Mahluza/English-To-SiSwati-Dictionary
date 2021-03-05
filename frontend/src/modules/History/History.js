@@ -28,13 +28,13 @@ function History() {
   // console.log('itemWord', itemWord);
   function onDel(values) {
     console.log('on delete values', values);
-    axios.post('/history', { word: values.word }).then((result) => {});
+    axios.post('/api/history', { word: values.word }).then((result) => {});
     // pageHistory.push('/history');
     pageHistory.go(0);
     // console.log('event id', event.target.id);
   }
   useEffect(() => {
-    axios.get('/history').then((result) => {
+    axios.get('/api/history').then((result) => {
       // console.log('get history result:', result);
       var n = result.data.history.length;
       var historyArray = result.data.history;

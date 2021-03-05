@@ -35,7 +35,7 @@ function SaveWordModal(props) {
     var val = 0;
     var name;
     // get lists
-    axios.get('/lists').then((result) => {
+    axios.get('/api/lists').then((result) => {
       console.log(result.data);
       for (name of result.data.lists) {
         listOptions.push({ label: name, value: val });
@@ -88,7 +88,7 @@ function SaveWordModal(props) {
     }
     // console.log('listNames:', listNames);
     var values = { mongoId: props.mongoDocId, lists: listNames };
-    axios.post('/save', values);
+    axios.post('/api/save', values);
   }
 
   return (

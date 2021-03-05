@@ -64,6 +64,6 @@ if (process.env.NODE_ENV === 'production') {
 //   res.send({ message: 'We did it!' });
 // });
 
-app.use('/', methods);
+app.use('/api', methods);
 
 app.listen(port, () => console.log('Backend server live on ' + port));
