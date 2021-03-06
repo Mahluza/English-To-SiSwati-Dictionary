@@ -7,8 +7,7 @@ function myDb() {
   const myDb = {};
   const dbName = 'eng-sis-dictionary-v1';
   const collName = 'words';
-  // change uri to given url
-  // const uri = process.env.MONGODB_URI || 'mongodb://localhost:27017';
+
   const uri =
     process.env.MONGODB_URI ||
     'mongodb+srv://admin:BthJQytGeo70RxoR@eng-sis-dictionary-west.6m87r.mongodb.net/eng-sis-dictionary-v1?retryWrites=true&w=majority';
@@ -16,7 +15,7 @@ function myDb() {
   const rClient = redis.createClient(process.env.REDIS_URL);
 
   rClient.on('error', function (error) {
-    // TODO: HANDLE ERRORS
+    // TODO: handle errors
     console.error(error);
   });
 
@@ -30,12 +29,6 @@ function myDb() {
       const db = client.db(dbName);
       const coll = db.collection(collName);
       const query = { word: word };
-
-      // what if no word is returned
-      // nothing should be added to history
-      // how do you know that until query is run
-      // run query before returning
-      // let's see what redis stores
       const doc = await coll.find(query).toArray();
       if (doc.length != 0) await pZadd('history:' + phoneId, +new Date(), word);
       return doc;
@@ -46,7 +39,6 @@ function myDb() {
 
   myDb.getHistory = async function (phoneId) {
     const pZrange = promisify(rClient.zrevrange).bind(rClient);
-
     // WITHSCORES
     const history = await pZrange('history:' + phoneId, 0, -1, 'withscores');
     return history;
@@ -54,8 +46,6 @@ function myDb() {
 
   myDb.delHistory = async function (phoneId, word) {
     const pZrem = promisify(rClient.zrem).bind(rClient);
-
-    // WITHSCORES omitted
     const newHistory = await pZrem('history:' + phoneId, word);
     return newHistory;
   };
@@ -106,7 +96,7 @@ function myDb() {
       await client.connect();
       const db = client.db(dbName);
       const coll = db.collection(collName);
-      // query returns all objects in an array. need to specidy update.
+      // query returns all objects in an array
       const query = {
         $and: [{ 'list.phoneID': phoneID }, { 'list.listName': listName }],
       };
@@ -137,7 +127,6 @@ function myDb() {
 
   myDb.insertWordIntoList = async function (
     docID,
-    // listID,
     listName,
     phoneID,
     dateAdded,
@@ -154,7 +143,6 @@ function myDb() {
         {
           $push: {
             list: {
-              // list_id: listID,
               listName: listName,
               phoneID: phoneID,
               listCreationDate: listCreationDate,

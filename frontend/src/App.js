@@ -28,12 +28,11 @@ const { Text } = Typography;
 // first step is to send the request from here
 function App() {
   let location = useLocation();
-  console.log('location:', location);
+
   // let history = useHistory()
-  console.log('location:', location.pathname.split('/'));
 
   const onMenuClick = (e) => {
-    // console.log('key', e.key);
+    //
   };
 
   return (

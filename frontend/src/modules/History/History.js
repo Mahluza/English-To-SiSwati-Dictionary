@@ -1,62 +1,39 @@
 import { React, useState, useEffect } from 'react';
-import {
-  Row,
-  Col,
-  Typography,
-  List,
-  Form,
-  Input,
-  Button,
-  Calendar,
-} from 'antd';
+import { Row, Typography, List, Form, Button } from 'antd';
 import { DeleteOutlined } from '@ant-design/icons';
 import axios from 'axios';
-import InfiniteScroll from 'react-infinite-scroller';
-
-import './History.css';
 import { useHistory } from 'react-router-dom';
 
-// const instance = axios.create({ baseURL: 'http://localhost:5000' });
+import './History.css';
+
 const { Title } = Typography;
-var data = [];
-// require('datejs');
+
 function History() {
-  // console.log(Date.today());
+  var data = [];
   const [history, setHistory] = useState([]);
-  const [itemWord, setItemWord] = useState('checking');
   const pageHistory = useHistory();
-  // console.log('itemWord', itemWord);
   function onDel(values) {
-    console.log('on delete values', values);
     axios.post('/api/history', { word: values.word }).then((result) => {});
-    // pageHistory.push('/history');
     pageHistory.go(0);
-    // console.log('event id', event.target.id);
   }
   useEffect(() => {
     axios.get('/api/history').then((result) => {
-      // console.log('get history result:', result);
+      //
       var n = result.data.history.length;
       var historyArray = result.data.history;
       var i;
       var date;
       for (i = 0; i < n; i += 2) {
         date = new Date(parseInt(historyArray[i + 1])).toDateString();
-        console.log(date);
+
         let [weekDay, month, day, year] = date.split(' ');
         data.push({
           word: historyArray[i],
           date: { month: month, day: day, year: year },
         });
       }
-      // console.log('data', data);
 
       setHistory(data);
-      // var d = parseInt(data[0].date);
-      // console.log('original:', data[0].date);
-      // console.log('converted:', d);
-      // var d1 = new Date(d);
-      // console.log('date obj:', d1.toDateString());
     });
   }, []);
   return (
@@ -68,7 +45,7 @@ function History() {
         </Title>
       </Row>
       <Row style={{ marginTop: '25px' }}>
-        {/* <InfiniteScroll> */}
+        {/* TODO: Implement infinite scroll */}
         <List
           split={false}
           className="history"
@@ -107,7 +84,6 @@ function History() {
             </List.Item>
           )}
         />
-        {/* </InfiniteScroll> */}
       </Row>
     </div>
   );
