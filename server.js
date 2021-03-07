@@ -1,10 +1,9 @@
 const express = require('express');
 const bodyParser = require('body-parser');
-
 const path = require('path');
-
 const app = express();
 // var cors = require('cors');
+
 const port = process.env.PORT || 5000;
 
 // MIDDLEWARE
@@ -14,6 +13,7 @@ app.use(bodyParser.urlencoded({ extended: true }));
 
 // APIs
 const methods = require('./routes/methods_mongo');
+app.use('/api', methods);
 
 if (process.env.NODE_ENV === 'production') {
   // pass client build to server
@@ -23,8 +23,6 @@ if (process.env.NODE_ENV === 'production') {
     res.sendFile(path.join(__dirname, 'frontend', 'build', 'index.html'));
   });
 }
-
-app.use('/api', methods);
 
 app.listen(port, () => {
   console.log(`Server is running on port: ${port}`);

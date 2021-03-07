@@ -53,7 +53,7 @@ function SavedWords() {
   function onListDel(menuVal) {
     var values = { phoneID: 2, listName: menuVal.key };
     axios.post('/api/listdel', values).then((result) => {});
-    // try delete the relevant list from the state and have the site update that way
+    // TODO: try delete the relevant list from the state and have the site update that way
 
     history.push('/saved');
     history.go(0);
