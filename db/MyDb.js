@@ -151,7 +151,7 @@ function myDb() {
         $pull: { list: { phoneID: phoneID, listName: listName } },
       };
       const range = { multi: true };
-      return await coll.updateMany(query, update, range);
+      await coll.updateMany(query, update, range);
     } finally {
       client.close();
     }
@@ -170,7 +170,7 @@ function myDb() {
       await client.connect();
       const db = client.db(dbName);
       const coll = db.collection(collName);
-      return await coll.updateOne(
+      await coll.updateOne(
         { _id: ObjectId(docID) },
         { $pull: { list: { phoneID: sentPhoneID, listName: sentListName } } }
       );
@@ -179,6 +179,15 @@ function myDb() {
     }
   };
 
+  /**
+   * Adds a word to a list
+   *
+   * @param docID mongo id of word to be added to list
+   * @param listName list that word is to be added to
+   * @param phoneID id of user's phone
+   * @param dateAdded date word is added to the list
+   * @param listCreationDate date the list was created
+   */
   myDb.insertWordIntoList = async function (
     docID,
     listName,
@@ -192,7 +201,7 @@ function myDb() {
       const db = client.db(dbName);
       const coll = db.collection(collName);
 
-      return await coll.update(
+      await coll.update(
         { _id: ObjectId(docID) },
         {
           $push: {

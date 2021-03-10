@@ -1,0 +1,11 @@
+.success-icon {
+  color: green;
+}
+
+.failure-icon {
+  color: orange;
+}
+
+.create-input {
+  margin-right: 5px;
+}

@@ -12,7 +12,7 @@ app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: true }));
 
 // APIs
-const methods = require('./routes/methods_mongo');
+const methods = require('./routes/methods');
 app.use('/api', methods);
 
 if (process.env.NODE_ENV === 'production') {

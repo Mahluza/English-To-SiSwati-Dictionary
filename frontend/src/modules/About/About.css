@@ -1,0 +1,52 @@
+.welcome-main {
+  height: 100%;
+}
+
+.welcome .site-name {
+  color: #001529;
+}
+
+.welcome-text-style {
+  font-size: 16px;
+  text-align: justify;
+  line-height: 35px;
+}
+
+.welcome-name-container {
+  padding-top: 32.5%;
+  height: 40%;
+}
+
+.about-name-container {
+  padding-top: 100px;
+}
+
+.about-main {
+  height: 100%;
+}
+
+.about-content {
+  height: 100%;
+}
+
+.welcome-text-bound {
+  max-width: 752px;
+}
+
+.about-text-bound {
+  margin-top: 25%;
+  max-width: 752px;
+}
+
+.about-text-style {
+  font-size: 16px;
+  text-align: justify;
+  line-height: 50px;
+}
+
+.enter-button {
+  width: 375px;
+  height: 45px;
+  margin-top: 50px;
+  font-size: large;
+}

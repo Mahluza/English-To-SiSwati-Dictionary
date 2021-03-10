@@ -12,13 +12,15 @@ function History() {
   var data = [];
   const [history, setHistory] = useState([]);
   const pageHistory = useHistory();
+
+  // deletes a word in history
   function onDel(values) {
     axios.post('/api/history', { word: values.word }).then((result) => {});
     pageHistory.go(0);
   }
   useEffect(() => {
     axios.get('/api/history').then((result) => {
-      //
+      // retrieve history and change date format
       var n = result.data.history.length;
       var historyArray = result.data.history;
       var i;
@@ -40,11 +42,10 @@ function History() {
     <div className="history-page">
       <Row justify="center" className="heading-row">
         <Title level={1} className="heading">
-          {' '}
           History
         </Title>
       </Row>
-      <Row style={{ marginTop: '25px' }}>
+      <Row className="history-words-container">
         {/* TODO: Implement infinite scroll */}
         <List
           split={false}

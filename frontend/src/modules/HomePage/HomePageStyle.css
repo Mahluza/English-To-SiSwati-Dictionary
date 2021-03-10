@@ -1,6 +1,50 @@
+.alert-container {
+  height: 50px;
+}
+
+.alert {
+  height: 26px;
+}
+
+.input-container {
+  margin-top: 10px;
+}
+
 .input-dimensions {
   height: 50px;
   width: 600px;
+}
+
+.search-button {
+  height: 50px;
+  width: 50px;
+}
+
+.search-icon {
+  font-size: 25px;
+}
+
+.save-button {
+  font-size: 18px;
+  padding-left: 20px;
+  margin-bottom: 10px;
+  border: 0px;
+}
+
+.word-type {
+  padding-left: 20px;
+}
+
+.word-def-type {
+  padding-left: 40px;
+}
+
+.word-def-container {
+  padding-left: 60px;
+}
+
+.word-def {
+  font-size: 16px;
 }
 
 .ant-select-selection-placeholder.placeholder-color {
@@ -11,21 +55,8 @@
   size: 16px;
 }
 
-/* find way to apply selectively */
+/* TODO: find way to apply selectively */
 .ant-checkbox-group-item {
   display: block;
   margin-right: 0;
-}
-
-/* .ant-modal-body {
-  width: 0;
-} */
-
-.word-style {
-}
-
-.type-style {
-}
-
-.definition-style {
 }

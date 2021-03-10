@@ -11,15 +11,13 @@ import {
   notification,
 } from 'antd';
 import axios from 'axios';
-import {
-  SmileOutlined,
-  FrownOutlined,
-} from '@ant-design/icons';
-import '../HomePageStyle.css';
+import { SmileOutlined, FrownOutlined } from '@ant-design/icons';
+import './SaveWordModal.css';
 
 function SaveWordModal(props) {
   const [modalOptions, setModalOptions] = useState([]);
-  var selectedOptions = [];
+
+  const [selected, setSelected] = useState([]);
   const [disableSave, setDisableSave] = useState([true]);
 
   useEffect(() => {
@@ -37,6 +35,7 @@ function SaveWordModal(props) {
     });
   }, []);
 
+  // create a new list on frontend
   const onCreateList = (values) => {
     setModalOptions(
       modalOptions.push({ label: values.listName, value: modalOptions.length })
@@ -44,20 +43,24 @@ function SaveWordModal(props) {
     setModalOptions(modalOptions);
   };
 
+  // save chosen list values
   function onChange(values) {
     if (values.length > 0) {
       setDisableSave(false);
     } else {
       setDisableSave(true);
     }
-    selectedOptions = values;
+
+    setSelected(values);
   }
 
+  // save word in chosen list(s)
   function onSave() {
     var listNames = [];
     // index of list based on checkbox values
     var listIndex;
-    for (listIndex of selectedOptions) {
+
+    for (listIndex of selected) {
       listNames.push(modalOptions[listIndex].label);
     }
 
@@ -66,12 +69,12 @@ function SaveWordModal(props) {
       if (result.data.success) {
         notification.open({
           message: 'Saved!',
-          icon: <SmileOutlined style={{ color: 'green' }} />,
+          icon: <SmileOutlined className="success-icon" />,
         });
       } else {
         notification.open({
           message: 'Save Error!',
-          icon: <FrownOutlined style={{ color: 'orange' }} />,
+          icon: <FrownOutlined className="failure-icon" />,
         });
       }
     });
@@ -95,7 +98,7 @@ function SaveWordModal(props) {
         <Col span={20}>
           <Form name="createList" onFinish={onCreateList}>
             <Row justify="end">
-              <Col style={{ marginRight: '5px' }}>
+              <Col className="create-input">
                 <Form.Item name="listName">
                   <Input />
                 </Form.Item>

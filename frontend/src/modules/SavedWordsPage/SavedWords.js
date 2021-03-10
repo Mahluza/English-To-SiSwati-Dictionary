@@ -6,7 +6,7 @@ import InfiniteScroll from 'react-infinite-scroller';
 import axios from 'axios';
 
 import './SavedWords.css';
-
+// TODO: refines scroll of LISTs. Appears to currently scroll if two too many.
 const { Title } = Typography;
 
 const words = [];
@@ -26,6 +26,7 @@ function SavedWords() {
   useEffect(() => {
     axios.get('/api/lists').then((result) => {
       var name;
+      // extract names of retrieved user lists
       for (name of result.data.lists) {
         listNames.push({ title: name });
       }
@@ -34,6 +35,8 @@ function SavedWords() {
     });
 
     // if a list has been selected
+    // retrieve its members
+    // memebrs route is same as saved/ + phoneId/ + listName
     if (locationArray.length > 2) {
       var listName = locationArray[3];
       setSelectedList(listName);
@@ -50,6 +53,7 @@ function SavedWords() {
     }
   }, []);
 
+  // deletes a list
   function onListDel(menuVal) {
     var values = { phoneID: 2, listName: menuVal.key };
     axios.post('/api/listdel', values).then((result) => {});
@@ -59,6 +63,7 @@ function SavedWords() {
     history.go(0);
   }
 
+  // deletes a word
   function onWordDel(menuVal) {
     var wordMongoId = menuVal.key;
     var values = { docID: wordMongoId, phoneID: 2, listName: locationArray[3] };
@@ -71,12 +76,12 @@ function SavedWords() {
   }
 
   return (
-    <div style={{ height: '100%', width: '100%' }} className="saved-page">
-      <Row style={{ height: '100%' }}>
+    <div className="page-container saved-page">
+      <Row className="col-container">
         <Col span={5} className="list-column">
           <InfiniteScroll>
-            <Row style={{ paddingLeft: '20px', marginTop: '20px' }}>
-              <Title level={4} style={{ color: '#001529' }}>
+            <Row className="lists-container">
+              <Title level={4} className="lists-title">
                 LISTS
               </Title>
             </Row>
@@ -86,7 +91,7 @@ function SavedWords() {
                 dataSource={data}
                 renderItem={(item) => (
                   <List.Item
-                    style={{ border: '0px' }}
+                    className="list-items"
                     extra={
                       <Dropdown.Button
                         className="more-button"
@@ -104,7 +109,7 @@ function SavedWords() {
                       title={
                         <a
                           href={'/saved/' + '2/' + item.title}
-                          style={{ color: '#001529' }}
+                          className="list-items-color"
                         >
                           {item.title}
                         </a>
@@ -121,7 +126,7 @@ function SavedWords() {
           <InfiniteScroll>
             {listRender ? (
               <div>
-                <Row style={{ marginTop: '65px' }}>
+                <Row className="list-members">
                   <Col span={8}></Col>
                   <Col span={8}>
                     <Row justify="center">

@@ -1,11 +1,36 @@
-.list-words {
+.page-container {
+  height: 100%;
   width: 100%;
 }
 
-/* .saved-words .words {
-  width: 66%;
-  padding-left: 200px;
-} */
+.col-container {
+  height: 100%;
+}
+
+.lists-container {
+  padding-left: 20px;
+  margin-top: 20px;
+}
+
+.saved-page .lists-title {
+  color: #001529;
+}
+
+.saved-page .list-items {
+  border-bottom: 0px;
+}
+
+.ant-list-item-meta-title .list-items-color {
+  color: #001529;
+}
+
+.list-members {
+  margin-top: 65px;
+}
+
+.list-words {
+  width: 100%;
+}
 
 .saved-page .words {
   width: 38%;
@@ -21,17 +46,12 @@
 }
 
 .list-column {
-  /* background-color: #031c33 */
   background-color: rgba(212, 212, 212);
 }
 
 .ant-list-item-meta-title {
   font-size: 16px;
 }
-
-/* .anticon {
-  color: white;
-} */
 
 .saved-page .ant-btn-link {
   color: #001529;

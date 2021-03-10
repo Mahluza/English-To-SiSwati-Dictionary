@@ -17,6 +17,7 @@ function Home() {
 
   const onFinish = (values) => {
     axios.post('/api/definition', values).then((result) => {
+      // replaces abbreviation with full version of word's type
       switch (result.data.type) {
         case 'n':
           result.data.type = 'noun';
@@ -43,7 +44,9 @@ function Home() {
           break;
       }
 
-      // if error msg present, don't set to false and make visible
+      // if word is found/errMsg not present
+      // show save button
+      // don't show not found notification
       if (!('errMsg' in result.data)) {
         setSaveHidden(false);
         setShowNf(false);
@@ -69,19 +72,15 @@ function Home() {
 
   return (
     <div>
-      <Row justify="center" align="middle" style={{ height: '50px' }}>
+      <Row justify="center" align="middle" className="alert-container">
         {showNotFound ? (
-          <Alert
-            style={{ height: '26px' }}
-            message={notFoundError}
-            type="error"
-          ></Alert>
+          <Alert className="alert" message={notFoundError} type="error"></Alert>
         ) : (
           <div></div>
         )}
       </Row>
       <Row justify="center">
-        <Title level={2}>Search for a Word</Title>
+        <Title level={2}>Search for a Word Between F-M</Title>
       </Row>
       <Row justify="center">
         <Radio.Group defaultValue="english">
@@ -91,7 +90,7 @@ function Home() {
           </Radio.Button>
         </Radio.Group>
       </Row>
-      <Row justify="center" style={{ marginTop: '10px' }}>
+      <Row justify="center" className="input-container">
         <Form name="wordToSearch" onFinish={onFinish}>
           <Row>
             <Col>
@@ -103,8 +102,8 @@ function Home() {
               <Form.Item>
                 <Button
                   htmlType="submit"
-                  icon={<SearchOutlined style={{ fontSize: '25px' }} />}
-                  style={{ height: '50px', width: '50px' }}
+                  icon={<SearchOutlined className="search-icon" />}
+                  className="search-button"
                 />
               </Form.Item>
             </Col>
@@ -115,19 +114,12 @@ function Home() {
         <Col span={2}></Col>
         <Col span={12}>
           <Row>
-            <Title level={1} style={{ marginBottom: '10px' }}>
-              {wordInfo.word}
-            </Title>
+            <Title level={1}>{wordInfo.word}</Title>
           </Row>
           <Row>
             <Button
               type="link"
-              style={{
-                fontSize: '18px',
-                paddingLeft: '20px',
-                marginBottom: '10px',
-                border: '0px',
-              }}
+              className="save-button"
               onClick={onSave}
               hidden={saveHidden}
             >
@@ -139,14 +131,14 @@ function Home() {
               mongoDocId={wordInfo.docID}
             />
           </Row>
-          <Row style={{ paddingLeft: '20px' }}>
+          <Row className="word-type">
             <Title level={3}>{wordInfo.type}</Title>
           </Row>
-          <Row style={{ paddingLeft: '40px' }}>
+          <Row className="word-def-type">
             <Title level={5}>{wordInfo.defType}</Title>
           </Row>
-          <Row style={{ paddingLeft: '60px' }}>
-            <Text style={{ fontSize: '16px' }}>{wordInfo.def}</Text>
+          <Row className="word-def-container">
+            <Text className="word-def">{wordInfo.def}</Text>
           </Row>
         </Col>
       </Row>
