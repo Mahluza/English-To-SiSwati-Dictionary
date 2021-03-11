@@ -1,6 +1,6 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
-import { Typography, Row, Col, Button } from 'antd';
+import { Typography, Row, Col, Button, Alert } from 'antd';
 
 import './About.css';
 
@@ -11,11 +11,7 @@ function AboutWelcome() {
   return (
     <Row justify="center" className="welcome-main">
       <Col>
-        <Row
-          justify="center"
-          className="welcome-name-container"
-          align="middle"
-        >
+        <Row justify="center" className="welcome-name-container" align="middle">
           <Title className="site-name">The SiSwati to English Dictionary</Title>
         </Row>
         <Row className="welcome-text-bound">
@@ -31,6 +27,13 @@ function AboutWelcome() {
             have to be verified manually. Many more words will be added as this
             process is completed.
           </Text>
+        </Row>
+        <Row justify="center" className="feel-free-container">
+          {/* <Text className="feel-free-msg">Feel free to delete items in History and Saved Words :)</Text> */}
+          <Alert
+            message="Feel free to delete items in History and Saved Words :)"
+            type="info"
+          />
         </Row>
         <Row justify="center" className="enter-container">
           <Button

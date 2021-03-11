@@ -71,7 +71,7 @@ function Home() {
   };
 
   return (
-    <div>
+    <div class="home-page">
       <Row justify="center" align="middle" className="alert-container">
         {showNotFound ? (
           <Alert className="alert" message={notFoundError} type="error"></Alert>
@@ -79,8 +79,15 @@ function Home() {
           <div></div>
         )}
       </Row>
-      <Row justify="center">
-        <Title level={2}>Search for a Word Between F-M</Title>
+      <Row justify="center" >
+        <Title level={2} className="search-prompt">Search for a Word</Title>
+      </Row>
+      <Row justify="center" className="range-msg-container">
+        <Alert
+          message="Words currently range from the letters F-M"
+          type="warning"
+          className="range-alert"
+        />
       </Row>
       <Row justify="center">
         <Radio.Group defaultValue="english">

@@ -6,6 +6,15 @@
   height: 26px;
 }
 
+.home-page .search-prompt {
+  margin-bottom: 5px;
+}
+
+.range-alert {
+  height: 26px;
+  margin-bottom: 10px;
+}
+
 .input-container {
   margin-top: 10px;
 }

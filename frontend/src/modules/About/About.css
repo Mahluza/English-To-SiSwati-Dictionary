@@ -44,9 +44,15 @@
   line-height: 50px;
 }
 
+.feel-free-container {
+  margin-top: 25px;
+}
+.feel-free-msg {
+  color: red;
+}
 .enter-button {
   width: 375px;
   height: 45px;
-  margin-top: 50px;
+  margin-top: 20px;
   font-size: large;
 }
